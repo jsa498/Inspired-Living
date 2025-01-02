@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PatternFormat } from 'react-number-format';
 import { Phone, Mail, Send, Clock, MapPin } from 'lucide-react';
-import PageHeader from '../components/PageHeader';
+import PageHeader from '@/components/PageHeader';
 
 interface FormData {
   name: string;
