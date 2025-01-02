@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import PageHeader from '../components/PageHeader';
 import ServiceCard from '../components/ServiceCard';
@@ -12,7 +14,6 @@ import {
   FaBrush,
   FaHome,
 } from 'react-icons/fa';
-import headerImage from './in.png';  // Import your image here
 
 const services = [
   {
@@ -77,7 +78,7 @@ function Services() {
       <PageHeader
         title="Our Services"
         description="Expert construction and renovation solutions tailored to your needs"
-        image={headerImage}  // Updated to use your own image
+        image="/images/in.png"
       />
 
       <div className="max-w-7xl mx-auto px-4 py-20">

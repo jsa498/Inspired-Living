@@ -1,4 +1,7 @@
+'use client';
+
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface ProjectCardProps {
   title: string;
@@ -14,12 +17,13 @@ function ProjectCard({ title, category, image, delay = 0 }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      className="group relative overflow-hidden rounded-lg cursor-pointer"
+      className="group relative overflow-hidden rounded-lg cursor-pointer h-72"
     >
-      <img 
+      <Image 
         src={image} 
-        alt={title} 
-        className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110"
+        alt={title}
+        fill
+        className="object-cover transition-transform duration-500 group-hover:scale-110"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="absolute bottom-0 left-0 right-0 p-6 text-white">

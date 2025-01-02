@@ -1,50 +1,42 @@
+'use client';
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import PageHeader from '../components/PageHeader';
 import ProjectCard from '../components/ProjectCard';
-
-// Import your images
-import project1Image from './4.jpg';
-import project2Image from './base.jpg';
-import project3Image from './bath.jpg';
-import project4Image from './liv.jpg';
-import project5Image from './out.jpg';
-import project6Image from './bed.jpg';
-
-// ... import more images as needed
 
 const projects = [
   {
     title: 'Elegant Kitchen Remodel',
     category: 'Kitchen',
-    image: project1Image,
+    image: '/images/4.jpg',
   },
   {
     title: 'Cozy Basement Lounge',
     category: 'Basement',
-    image: project2Image,
+    image: '/images/base.jpg',
   },
   {
     title: 'Modern Bathroom Upgrade',
     category: 'Bathroom',
-    image: project3Image,
+    image: '/images/bath.jpg',
   },
   {
     title: 'Modern Living Room Upgrade',
     category: 'Living Room',
-    image: project4Image,
+    image: '/images/liv.jpg',
   },
   {
     title: 'Modern Outdoor Upgrade',
     category: 'Outdoor',
-    image: project5Image,
+    image: '/images/out.jpg',
   },
   {
     title: 'Modern Bedroom Upgrade',
     category: 'Bedroom',
-    image: project6Image,
+    image: '/images/bed.jpg',
   },
-  // ... add more projects as needed
 ];
 
 const categories = ['All', 'Kitchen', 'Basement', 'Bathroom', 'Living Room', 'Outdoor', 'Bedroom'];

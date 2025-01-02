@@ -1,11 +1,10 @@
+'use client';
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import PageHeader from '../components/PageHeader';
 import { Send } from 'lucide-react';
 import emailjs from 'emailjs-com';
-
-// Import your own image
-import headerImage from './q.jpg'; // Adjust the path as needed
 
 interface FormData {
   name: string;
@@ -79,7 +78,7 @@ function Quote() {
       <PageHeader
         title="Request a Quote"
         description="Get started on your dream project today"
-        image={headerImage} // Updated to use your own image
+        image="/images/q.jpg"
       />
 
       <div className="max-w-4xl mx-auto px-4 py-20">

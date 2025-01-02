@@ -1,18 +1,25 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { ArrowRight, Star } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
       <section
-        className="relative h-[90vh] bg-cover bg-center"
-        style={{
-          backgroundImage:
-            'url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80")',
-        }}
+        className="relative h-[83vh]"
       >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        >
+          <source src="/home.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-black bg-opacity-50" />
         <div className="relative max-w-7xl mx-auto px-4 h-full flex items-center">
           <motion.div
@@ -25,19 +32,18 @@ function Home() {
               Transform Your Space with Expert Construction
             </h1>
             <p className="text-xl mb-8">
-              From concept to completion, we bring your vision to life with quality craftsmanship and
-              attention to detail.
+              From concept to completion, we bring your vision to life with quality craftsmanship and attention to detail.
             </p>
             <div className="flex gap-4">
               <Link
-                to="/quote"
+                href="/quote"
                 className="bg-primary text-white px-8 py-3 rounded-md hover:bg-opacity-90 transition-colors inline-flex items-center gap-2"
               >
                 Request Quote
                 <ArrowRight size={20} />
               </Link>
               <Link
-                to="/portfolio"
+                href="/portfolio"
                 className="bg-white text-secondary px-8 py-3 rounded-md hover:bg-opacity-90 transition-colors"
               >
                 View Our Work
@@ -102,7 +108,7 @@ function Home() {
                   <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
                   <p className="text-gray-600 mb-4">{service.description}</p>
                   <Link
-                    to="/services"
+                    href="/services"
                     className="text-primary hover:text-opacity-80 inline-flex items-center gap-2"
                   >
                     View All Services
@@ -158,27 +164,88 @@ function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-primary py-20">
-        <div className="max-w-7xl mx-auto px-4 text-center">
+      <section className="py-20 bg-gray-50 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
+            className="relative bg-gradient-to-r from-primary to-primary/90 rounded-[2.5rem] p-12 shadow-2xl"
           >
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Ready to Start Your Project?
-            </h2>
-            <p className="text-white text-opacity-90 mb-8 max-w-2xl mx-auto">
-              Contact us today for a free consultation and quote. Let's bring your vision to life!
-            </p>
-            <Link
-              to="/quote"
-              className="bg-white text-primary px-8 py-3 rounded-md hover:bg-opacity-90 transition-colors inline-flex items-center gap-2"
-            >
-              Get Started
-              <ArrowRight size={20} />
-            </Link>
+            {/* Floating effect overlay */}
+            <div className="absolute inset-0 rounded-[2.5rem] bg-white opacity-5 blur-2xl transform -rotate-6 scale-105" />
+            <div className="absolute inset-0 rounded-[2.5rem] bg-primary opacity-10 blur-xl transform rotate-3 scale-105" />
+            
+            {/* Content Container */}
+            <div className="relative">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                {/* Left side - Text and Button */}
+                <div>
+                  <motion.h2
+                    initial={{ x: -20, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="text-4xl font-bold text-white mb-4"
+                  >
+                    Ready to Start Your Project?
+                  </motion.h2>
+                  <motion.p
+                    initial={{ x: -20, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, duration: 0.6 }}
+                    className="text-white/90 text-lg mb-8"
+                  >
+                    Contact us today for a free consultation and quote.
+                  </motion.p>
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4, duration: 0.6 }}
+                  >
+                    <Link
+                      href="/quote"
+                      className="group bg-white hover:bg-opacity-95 text-primary px-8 py-4 rounded-full inline-flex items-center gap-2 font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
+                    >
+                      Get Started
+                      <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </Link>
+                  </motion.div>
+                </div>
+
+                {/* Right side - Stats Grid */}
+                <div className="grid grid-cols-2 gap-6">
+                  {[
+                    { number: '100+', label: 'Projects' },
+                    { number: '5+', label: 'Years' },
+                    { number: '24/7', label: 'Support' },
+                    { number: '100%', label: 'Satisfaction' }
+                  ].map((stat, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ y: 20, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
+                      className="relative group"
+                    >
+                      <div className="absolute inset-0 bg-white/5 rounded-2xl transform transition-transform group-hover:scale-105 duration-300" />
+                      <div className="relative p-4 text-center">
+                        <div className="text-3xl font-bold text-white mb-1">{stat.number}</div>
+                        <div className="text-sm text-white/80">{stat.label}</div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Decorative elements */}
+            <div className="absolute top-0 left-0 w-20 h-20 bg-white/5 rounded-full blur-xl transform -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-xl transform translate-x-1/4 translate-y-1/4" />
           </motion.div>
         </div>
       </section>

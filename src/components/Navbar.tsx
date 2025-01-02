@@ -1,16 +1,19 @@
+'use client';
+
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
-import logo from './1.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const location = useLocation();
-  const [hoveredPath, setHoveredPath] = useState(location.pathname);
+  const pathname = usePathname();
+  const [hoveredPath, setHoveredPath] = useState(pathname);
 
   useEffect(() => {
     if (isOpen) {
@@ -41,8 +44,8 @@ export default function Navbar() {
   }, [lastScrollY]);
 
   useEffect(() => {
-    setHoveredPath(location.pathname);
-  }, [location.pathname]);
+    setHoveredPath(pathname);
+  }, [pathname]);
 
   const navItems = [
     { path: '/', name: 'Home' },
@@ -65,8 +68,8 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center">
-              <img src={logo} alt="ILC Logo" className="h-12" />
+            <Link href="/" className="flex items-center">
+              <Image src="/1.png" alt="ILC Logo" width={48} height={48} className="h-12 w-auto" />
             </Link>
           </div>
 
@@ -76,12 +79,12 @@ export default function Navbar() {
               {navItems.map((item) => (
                 <Link
                   key={item.path}
-                  to={item.path}
+                  href={item.path}
                   className={`relative px-4 py-2 transition-colors rounded-md
-                    ${item.path === location.pathname ? 'text-white' : 'text-white/75'}
+                    ${item.path === pathname ? 'text-white' : 'text-white/75'}
                   `}
                   onMouseOver={() => setHoveredPath(item.path)}
-                  onMouseLeave={() => setHoveredPath(location.pathname)}
+                  onMouseLeave={() => setHoveredPath(pathname)}
                 >
                   <span className="relative z-10">{item.name}</span>
                   {item.path === hoveredPath && (
@@ -142,11 +145,11 @@ export default function Navbar() {
             >
               <div className="flex flex-col p-6 space-y-4">
                 {navItems.map((item) => {
-                  const isActive = location.pathname === item.path;
+                  const isActive = pathname === item.path;
                   return (
                     <Link
                       key={item.path}
-                      to={item.path}
+                      href={item.path}
                       onClick={() => setIsOpen(false)}
                       className="flex items-center justify-center"
                     >
