@@ -9,7 +9,7 @@ import Contact from './pages/Contact';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/Inspired-living-constructions-inc.">
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-grow">

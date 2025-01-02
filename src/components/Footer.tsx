@@ -24,7 +24,7 @@ function Footer() {
                 <FaTiktok size={20} />
               </a>
               <a
-                href="https://www.instagram.com/yourcompany" // Replace with your Instagram URL
+                href="https://www.instagram.com/ilcwork?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" // Replace with your Instagram URL
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-primary transition-colors"
